@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Girlfriend?</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Will You Be My Girlfriend?</h1>
+        <form action="/submit" method="post">
+            <button type="submit" name="choice" value="yes">Yes</button>
+            <button type="submit" name="choice" value="no" id="no-button">No</button>
+        </form>
+        {% if feedback %}
+            <p>{{ feedback }}</p>
+        {% endif %}
+    </div>
+    <script>
+        const noButton = document.getElementById('no-button');
+        noButton.addEventListener('mouseover', () => {
+            const x = Math.floor(Math.random() * window.innerWidth);
+            const y = Math.floor(Math.random() * window.innerHeight);
+            noButton.style.position = 'absolute';
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
+        });
+    </script>
+</body>
+</html>
